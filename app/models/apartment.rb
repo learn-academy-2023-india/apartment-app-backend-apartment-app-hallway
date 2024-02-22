@@ -1,5 +1,5 @@
 class Apartment < ApplicationRecord
   belongs_to :user
-  validates :street, :unit, :city, :user_id, :image, :pets, :bathrooms, :bedrooms, :price, :square_footage, :state, presence: true
+  validates :street, :unit, :city, :state, :square_footage, :price, :bathrooms, :bedrooms, :pets, :manager, :email, :image, :user_id, presence: true
 end 
 

@@ -1,176 +1,223 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Apartment, type: :model do
   let(:user) { User.create(
-    email: 'test@example.com',
-    password: 'password',
-    password_confirmation: 'password'
-    )
-  }
+    email: "janet.doezer@gmail.com",
+    password: "password",
+    password_confirmation: "password"
+  )}
 
-  it 'should validate street' do
+  it "should validate street" do
     apartment = user.apartments.create(
-      unit: '2A',
-      city: 'Little Whinging',
-      state: 'Surrey',
-      square_footage: 2000,
-      price: '2000',
-      bedrooms: 3,
-      bathrooms: 2,
-      pets: 'yes',
-      image: 'https://c8.alamy.com/comp/B0RJGE/small-bungalow-home-with-pathway-in-addlestone-surrey-uk-B0RJGE.jpg'
+      unit: "9A",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:street]).to include("can't be blank")
   end
-  it 'should validate unit' do 
+
+  it "should validate unit" do
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",    
-    city: "New York", 
-    state: "NY",
-    square_footage: 2000, 
-    price: 13000, 
-    bedrooms: 5, 
-    bathrooms: 3, 
-    pets: "Puppets only",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg" 
+      street: "101 Rimrock",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:unit]).to include("can't be blank")
   end
 
-  it 'should validate city' do 
+  it "should validate city" do 
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",
-    unit: "30",   
-    state: "NY",
-    square_footage: 2000, 
-    price: 13000, 
-    bedrooms: 5, 
-    bathrooms: 3, 
-    pets: "Puppets only",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg" 
+      street: "101 Rimrock",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:city]).to include("can't be blank")
   end
 
-  it 'should validate state' do 
+  it "should validate state" do 
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",
-    unit: "30",   
-    city: "NY",    
-    square_footage: 2000, 
-    price: 13000, 
-    bedrooms: 5, 
-    bathrooms: 3, 
-    pets: "Puppets only",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg" 
+      street: "101 Rimrock",
+      city: "San Diego",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:state]).to include("can't be blank")
   end
 
-  it 'should validate sqaure_footage' do 
+  it "should validate square_footage" do 
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",
-    unit: "30",
-    state: "NY",   
-    city: "New York",    
-    price: 13000, 
-    bedrooms: 5, 
-    bathrooms: 3, 
-    pets: "Puppets only",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg" 
+      street: "101 Rimrock",
+      city: "San Diego",
+      state: "CA",
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:square_footage]).to include("can't be blank")
   end
 
-  it 'should validate price' do 
+  it "should validate price" do 
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",
-    unit: "30",
-    state: "NY",   
-    city: "New York",    
-    square_footage: 2000, 
-    bedrooms: 5, 
-    bathrooms: 3, 
-    pets: "Puppets only",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg" 
+      street: "101 Rimrock",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:price]).to include("can't be blank")
   end
 
-  it 'should validate bedrooms' do 
+  it "should validate bedrooms" do 
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",
-    unit: "30",
-    state: "NY",   
-    city: "New York",    
-    square_footage: 2000, 
-    price: 13000,
-    bathrooms: 3, 
-    pets: "Puppets only",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg" 
+      street: "101 Rimrock",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:bedrooms]).to include("can't be blank")
   end
 
-  it 'should validate bathrooms' do 
+  it "should validate bathrooms" do 
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",
-    unit: "30",
-    state: "NY",   
-    city: "New York",    
-    square_footage: 2000, 
-    price: 13000,
-    bedrooms: 5, 
-    pets: "Puppets only",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg" 
+      street: "101 Rimrock",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:bathrooms]).to include("can't be blank")
   end
 
-  it 'should validate pets' do 
+  it "should validate pets" do 
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",
-    unit: "30",
-    state: "NY",   
-    city: "New York",    
-    square_footage: 2000, 
-    price: 13000,
-    bedrooms: 5, 
-    bathrooms: 3,
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg" 
+      street: "101 Rimrock",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:pets]).to include("can't be blank")
   end
 
-  it 'should validate image' do 
+  it "should validate image" do 
     apartment = user.apartments.create(
-    street: "456 Bogus Blvd",
-    unit: "30",
-    state: "NY",   
-    city: "New York",    
-    square_footage: 2000, 
-    price: 13000,
-    bedrooms: 5, 
-    bathrooms: 3,
-    pets: "Puppets only"
+      street: "101 Rimrock",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
     expect(apartment.errors[:image]).to include("can't be blank")
   end
 
-  it 'should validate user_id' do 
-    apartment = Apartment.create(
-    street: "456 Bogus Blvd",
-    unit: "30",
-    state: "NY",   
-    city: "New York",    
-    square_footage: 2000, 
-    price: 13000,
-    bedrooms: 5, 
-    bathrooms: 3,
-    pets: "Puppets only",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg"
+  it "should validate user_id" do 
+    apartment = Apartment.new(
+      street: "101 Rimrock",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer",
+      email: "janet.doezer@gmail.com"
     )
-    expect(apartment.errors[:user_id]).to include("can't be blank")
+    apartment.valid?
+    expect(apartment.errors[:user]).to include("must exist")
+  end
+
+  it "should validate manager" do
+    apartment = user.apartments.create(
+      street: "101 Rimrock",
+      unit: "9A",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      email: "janet.doezer@gmail.com"
+    )
+    expect(apartment.errors[:manager]).to include("can't be blank")
+  end
+
+  it "should validate email" do
+    apartment = user.apartments.create(
+      street: "101 Rimrock",
+      unit: "9A",
+      city: "San Diego",
+      state: "CA",
+      square_footage: 500,
+      price: "1800",
+      bedrooms: 2,
+      bathrooms: 2.0,
+      pets: "Yes",
+      image: "http://tinyurl.com/bdf8wvhj",
+      manager: "Janet Doezer"
+    )
+    expect(apartment.errors[:email]).to include("can't be blank")
   end
 end
-
