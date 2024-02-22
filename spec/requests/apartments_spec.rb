@@ -60,4 +60,22 @@ RSpec.describe "Apartments", type: :request do
       expect(apartment.street).to eq "720 Second Avenue"
     end
   end
+
+  describe "PATCH /update" do
+    it "updates an apartment" do
+      apartment = user.apartments.first
+
+      updated_apartment_params = {
+        apartment: {
+          price: "1900" 
+        }
+      }
+
+      patch "/apartments/#{apartment.id}", params: updated_apartment_params
+
+      updated_apartment = Apartment.find(apartment.id)
+      expect(response).to have_http_status(200)
+      expect(updated_apartment.price).to eq "1900"
+    end
+  end
 end
