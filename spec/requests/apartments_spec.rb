@@ -30,5 +30,34 @@ RSpec.describe "Apartments", type: :request do
       expect(json.first["street"]).to eq "101 Rimrock"
     end
   end
-end
 
+  describe "POST /create" do
+    it "creates an apartment" do
+      apartment_params = {
+        apartment: {
+          street: "720 Second Avenue",
+          unit: "508",
+          city: "San Diego",
+          state: "CA",
+          square_footage: 700,
+          price: "2500",
+          bedrooms: 2,
+          bathrooms: 2.0,
+          pets: "Yes",
+          image: "http://tinyurl.com/yc2c33b7",
+          manager: "Janet Doezer",
+          email: "janet.doezer@gmail.com",
+          user_id: user.id
+        }
+      }
+
+      expect {
+        post "/apartments", params: apartment_params
+      }.to change(Apartment, :count).by(1)
+
+      expect(response).to have_http_status(200)
+      apartment = Apartment.last
+      expect(apartment.street).to eq "720 Second Avenue"
+    end
+  end
+end
